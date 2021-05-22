@@ -1,11 +1,9 @@
-import styles from '../styles/home.module.scss';
+import Card from '../components/CardRecomendacao';
 
 export default function Home() {
   return (
-    <h1 className={styles.title}>
-    Hello
-    {' '}
-    <span>World</span>
-  </h1>
+    <main style={{marginTop: '-2.5rem'}}>
+      <Card />
+    </main>
   )
 }
