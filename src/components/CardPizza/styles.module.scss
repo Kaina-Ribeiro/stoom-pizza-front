@@ -1,0 +1,62 @@
+
+.card {
+  width: 100%;
+  display: flex;
+  position: relative;
+  background: var(--gray-100);
+  border-radius: 1rem;
+
+  & + & {
+    margin-top: 0.75rem;
+  }
+}
+
+.cardBody {
+  display: flex;
+  line-height: 1.7rem;
+}
+
+.cardImage {
+  width: 35%;
+  overflow: hidden;
+  max-width: 150px;
+  border-radius: 1rem 0 0 1rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.cardContent {
+  flex: 1;
+  display: flex;
+  padding: 1.5rem;
+  flex-direction: column;
+
+  h3 {
+    color: var(--gray-800);
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.25rem;
+  }
+}
+
+.cardSection {
+  color: var(--gray-800);
+
+  > span {
+    color: var(--gray-300);
+    font-weight: bold;
+  }
+}
+
+.cardInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  > .price {
+    color: var(--green);
+    margin-top: 1.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+}

@@ -1,10 +1,40 @@
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .card {
-  width: 90%;
-  margin: 0 auto;
-  padding: 0.8rem 1.5rem 1.5rem 1.5rem;
-  max-width: 600px;
+  width: 100%;
+  position: relative;
+  padding: 0.8rem 1.5rem 1rem 1rem;
   background: var(--gray-100);
   border-radius: 1rem;
+}
+
+.badge {
+  top: -40px;
+  right: -25px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  position: absolute;
+  font-size: 0.75rem;
+  text-align: center;
+  line-height: 1.2em;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-size: cover;
+  background-image: url('/images/star.png');
+  background-repeat: no-repeat;
+
+  span {
+    font-size: 1.25rem;
+    margin-top: 0.5em;
+    font-weight: bold;
+  }
 }
 
 .cardHeader {
@@ -22,25 +52,18 @@
 
 .cardImage {
   width: 35%;
-
-  div {
-    overflow: hidden;
-    position: relative;
-    padding-top: 125%;
-    border-radius: 1rem 0 0 1rem;
-
-    img {
-      top: 0;
-      left: 0;
-      position: absolute;
-      zoom: -75%;
-    }
-  }
+  overflow: hidden;
+  max-width: 200px;
+  border-radius: 1rem 0 0 1rem;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .cardContent {
   flex: 1;
+  display: flex;
   margin-left: 1rem;
+  flex-direction: column;
 
   h3 {
     margin-bottom: 0.5rem;
@@ -52,6 +75,11 @@
 
 .cardSection {
   color: var(--gray-800);
+
+  & + & {
+    margin-top: 0.5rem;
+  }
+
   span {
     color: var(--gray-300);
     font-weight: bold;
@@ -60,34 +88,23 @@
 
 .cardInfo {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+
+  margin-top: auto;
+
   .price {
     font-weight: bold;
     font-size: 2rem;
     color: var(--green);
   }
+}
 
-  .buy {
-    height: 2rem;
-    border: 0;
-    padding: 1.3rem;
-    border-radius: 0.8rem;
-    background: var(--green);
-    color: var(--white);
-    letter-spacing: 0.2rem;
+.message {
+  color: #000;
+  align-self: flex-end;
 
-    display: flex;
-    align-items: center;
-
-    svg {
-      margin-left: 1rem;
-    }
-
-    transition: filter 0.2s;
-
-    &:hover {
-      filter: brightness(0.8);
-    }
+  span {
+    color: red;
   }
 }

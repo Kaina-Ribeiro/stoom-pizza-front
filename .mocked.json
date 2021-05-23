@@ -1,8 +1,0 @@
-{
-  "Pizza": {
-    "image": "string",
-    "title": "string",
-    "description": "string",
-    "price": "int"
-  }
-}
