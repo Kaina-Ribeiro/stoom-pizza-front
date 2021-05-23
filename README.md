@@ -2,10 +2,6 @@
 
 📝 Stoom Pizzas - é um projeto desafiador entusiasta proposto pela empresa **stoom** em que um usário tem a possibilidade de montar sua pizza e juntar pontos de benfício.
 
-## 🎨 Layout
-
-## Web
-
 ## 🛠 Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
@@ -52,12 +48,9 @@ Feito por Gabriel Ribeiro 👋🏽
 
 [nodejs]: https://nodejs.org/
 [typescript]: https://www.typescriptlang.org/
-[jsonserver]: https://github.com/typicode/json-server
+[miragejs]: https://miragejs.com/
 [reactjs]: https://reactjs.org
 [yarn]: https://yarnpkg.com/
 [vscode]: https://code.visualstudio.com/
-[vceditconfig]: https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
-[license]: https://opensource.org/licenses/MIT
 [vceslint]: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
 [prettier]: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
-[rs]: https://rocketseat.com.br
