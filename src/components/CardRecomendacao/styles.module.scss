@@ -1,14 +1,16 @@
 .container {
   width: 100%;
   display: flex;
+  min-height: 256px;
   align-items: center;
   flex-direction: column;
 }
 
 .card {
   width: 100%;
-  position: relative;
   padding: 0.8rem 1.5rem 1rem 1rem;
+  position: relative;
+  min-height: 250px;
   background: var(--gray-100);
   border-radius: 1rem;
 }
@@ -107,4 +109,12 @@
   span {
     color: red;
   }
+}
+
+.center {
+  width: 100%;
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

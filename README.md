@@ -1,34 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 💻 Sobre o projeto
 
-## Getting Started
+📝 Stoom Pizzas - é um projeto desafiador entusiasta proposto pela empresa **stoom** em que um usário tem a possibilidade de montar sua pizza e juntar pontos de benfício.
 
-First, run the development server:
+## 🎨 Layout
+
+## Web
+
+## 🛠 Tecnologias
+
+As seguintes ferramentas foram usadas na construção do projeto:
+
+- [React][reactjs]
+- [TypeScript][typescript]
+- [MirageJS][miragejs]
+
+
+## 🚀 Como executar o projeto
+
+💡Para o correto funcionamento do app web é necessário que o servidor backend esteja rodando.
+
+### 🎲 **Back End (servidor)**
+- Para o cumprimento dos requisitos foi utilizado uma Lib chamada <h3>**MIRAGEJS**</h3>
+
+### Pré-requisitos
+
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com).
+Além disto é bom ter um editor para trabalhar com o código como [VSCode][vscode]
+
+### 📱Rodando a aplicação **WEB**
 
 ```bash
-npm run dev
-# or
-yarn dev
+# Acesse a pasta do projeto web
+$ cd stoom-pizza-front
+
+# Instale as dependências
+$ yarn
+ou
+$ npm i
+
+# Inicie o servidor
+$ yarn dev
+ou
+$ npm run dev
+
+# Entre em > http://localhost:3000 <
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Feito por Gabriel Ribeiro 👋🏽
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[nodejs]: https://nodejs.org/
+[typescript]: https://www.typescriptlang.org/
+[jsonserver]: https://github.com/typicode/json-server
+[reactjs]: https://reactjs.org
+[yarn]: https://yarnpkg.com/
+[vscode]: https://code.visualstudio.com/
+[vceditconfig]: https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
+[license]: https://opensource.org/licenses/MIT
+[vceslint]: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
+[prettier]: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
+[rs]: https://rocketseat.com.br

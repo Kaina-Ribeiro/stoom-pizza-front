@@ -1,20 +1,24 @@
 import styles from './styles.module.scss';
 
 interface CardPizzaProps {
-  image: string;
+  image?: string;
   pizzaName: string;
   content: string | JSX.Element;
   price: number;
+  checked?: boolean;
+  onClick?: () => void;
 }
 
 export default function CardPizza({
   image,
   pizzaName,
   content,
-  price
+  price,
+  checked = false,
+  onClick: handleClick = () => {}
 }: CardPizzaProps) {
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onClick={handleClick}>
       <div className={styles.cardBody}>
         <div
           className={styles.cardImage}
@@ -22,8 +26,9 @@ export default function CardPizza({
         />
 
         <div className={styles.cardContent}>
-          <div>
+          <div className={`${styles.title} ${checked ? styles.checked : ''}`}>
             <h3>{pizzaName}</h3>
+            <div />
           </div>
           <div className={styles.cardSection}>
             <span>

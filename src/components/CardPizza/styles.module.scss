@@ -1,6 +1,6 @@
-
 .card {
   width: 100%;
+  cursor: pointer;
   display: flex;
   position: relative;
   background: var(--gray-100);
@@ -12,14 +12,14 @@
 }
 
 .cardBody {
+  width: 100%;
   display: flex;
   line-height: 1.7rem;
 }
 
 .cardImage {
-  width: 35%;
+  width: 150px;
   overflow: hidden;
-  max-width: 150px;
   border-radius: 1rem 0 0 1rem;
   background-size: cover;
   background-repeat: no-repeat;
@@ -30,12 +30,46 @@
   display: flex;
   padding: 1.5rem;
   flex-direction: column;
+}
+
+.title {
+  width: 100%;
+  position: relative;
+  margin-bottom: 1.25rem;
 
   h3 {
     color: var(--gray-800);
     font-size: 1.5rem;
     font-weight: bold;
-    margin-bottom: 1.25rem;
+  }
+
+  ::before {
+    top: -4px;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    border: 2px solid white;
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background-color: white;
+  }
+}
+
+.checked {
+  ::before {
+    border-color: var(--green);
+  }
+
+  ::after {
+    top: 2px;
+    right: 6px;
+    width: 24px;
+    height: 24px;
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--green);
   }
 }
 

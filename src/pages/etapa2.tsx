@@ -1,47 +1,87 @@
-import Link from 'next/link'
+import { createServer } from "miragejs"
 import { BiRightArrow } from 'react-icons/bi'
+import { useEffect, useState } from 'react'
+
 import Button from '../components/Button'
 import CardPizza from '../components/CardPizza'
 import HeaderPizza from '../components/HeaderPizza'
-import Steps from '../components/Steps'
+
+import Loading from '../components/Loading'
+
+import { usePedido } from '../hooks/Pedido'
+
+createServer({
+  routes() {
+    this.get("/api/recheios", () => ({
+      recheios: [
+        {
+          id: 1,
+          image: "/images/pizzaSabores/queijo.png",
+          massa: "Queijo",
+          detalhes: "Recheio de queijo",
+          price: 14
+        }, {
+          id: 2,
+          image: "/images/pizzaSabores/calabresa.jpg",
+          massa: "Calabresa",
+          detalhes: "Recheio de Calabresa",
+          price: 16
+        }, {
+          id: 3,
+          image: "/images/pizzaSabores/brocolis.jpg",
+          massa: "brocolis com bacon",
+          detalhes: "Recheio de brocolis com bacon",
+          price: 19
+        }
+      ],
+    }))
+    this.passthrough();
+  },
+})
 
 const Etapa2 = () => {
-  const asd =
-    'Frequentemente vendida em fatias grandes e largas, a pizza ao\
-  estilo de Nova York tem uma massa mais grossa e é levemente\
-  crocante por fora. Dessa forma, são consumidas sem talheres. É\
-  bastante comum que as fatias sejam dobradas, facilitando o consumo\
-  por parte dos clientes.'
-    // fetch('')
-    //   .then(response => response.json())
-    //   .then(json => console.log(json))
+  const [recheios, setRecheios] = useState(null);
 
-  const image = 'https://www.socialbauru.com.br/wp-content/uploads/2019/04/pizzadem.jpg'
+  const { data, selecionar } = usePedido();
+  const selectedRecheio = data?.recheio;
+
+  const handleClick = (recheio) => {
+    selecionar('recheio', recheio)
+  }
+
+  useEffect(() => {
+    fetch('/api/recheios')
+      .then((res) => res.json())
+      .then((json) => setRecheios(json.recheios))
+  }, []);
 
   return (
     <>
-      <HeaderPizza select={'Selecione sua borda:'} step={'2/4'} />
-      <form>
-        <CardPizza
-          image={image}
-          pizzaName="Nova-Etapa2"
-          price={10}
-          content={asd}
-        />
-        <CardPizza
-          image={image}
-          pizzaName="Etapa2"
-          price={10}
-          content={asd}
-        />
-        <CardPizza
-          image={image}
-          pizzaName="Etapa2"
-          price={10}
-          content={asd}
-        />
-      </form>
-      <Button text={'montar seu pedido'} icon={<BiRightArrow />} href='/etapa3' />
+      <HeaderPizza select={'Selecione o recheio:'} step={'2/3'} />
+      {!recheios ? <Loading /> : (
+        <div>
+          {recheios.map(recheio => (
+            <CardPizza
+              key={recheio.id}
+              image={recheio.image}
+              pizzaName={recheio.massa}
+              price={recheio.price}
+              content={recheio.detalhes}
+              checked={selectedRecheio && (recheio.id === selectedRecheio.id)}
+              onClick={() => handleClick(recheio)}
+            />
+          ))}
+        </div>
+      )}
+      <Button
+        style={{
+          float: 'right',
+          margin: '1rem'
+        }}
+        text={'montar seu pedido'}
+        icon={<BiRightArrow />}
+        href='/etapa3'
+      />
     </>
   )
 }

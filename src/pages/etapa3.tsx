@@ -1,49 +1,92 @@
-import Link from 'next/link'
+import { createServer } from "miragejs"
 import { BiRightArrow } from 'react-icons/bi'
+import { useEffect, useState } from 'react';
+
 import Button from '../components/Button'
 import CardPizza from '../components/CardPizza'
 import HeaderPizza from '../components/HeaderPizza'
+import Loading from '../components/Loading'
+import { usePedido } from "../hooks/Pedido";
 
-const Etapa2 = () => {
-  const asd =
-    'Frequentemente vendida em fatias grandes e largas, a pizza ao\
-  estilo de Nova York tem uma massa mais grossa e é levemente\
-  crocante por fora. Dessa forma, são consumidas sem talheres. É\
-  bastante comum que as fatias sejam dobradas, facilitando o consumo\
-  por parte dos clientes.'
-    // fetch('')
-    //   .then(response => response.json())
-    //   .then(json => console.log(json))
+createServer({
+  routes() {
+    this.get("/api/tamanhos", () => ({
+      tamanhos: [
+        {
+          id: 1,
+          size: "Pequena",
+          price: 19.99,
+          slices: 4
+        },
+        {
+          id: 2,
+          size: "Média",
+          price: 29.99,
+          slices: 6
+        },
+        {
+          id: 3,
+          size: "Grande",
+          price: 39.99,
+          slices: 8
+        },
+        {
+          id: 4,
+          size: "Família",
+          price: 49.99,
+          slices: 12
+        }
+      ]
+    }))
+    this.passthrough();
+  },
+})
 
-  const image = 'https://www.socialbauru.com.br/wp-content/uploads/2019/04/pizzadem.jpg'
+const Etapa3 = () => {
+  const [tamanhos, setTamanhos] = useState(null);
+
+  const { data, selecionar } = usePedido();
+  const selectedTamanho = data?.tamanho;
+
+  const handleClick = (tamanho) => {
+    selecionar('tamanho', tamanho);
+  }
+
+  useEffect(() => {
+    fetch('/api/tamanhos')
+      .then((res) => res.json())
+      .then((json) => setTamanhos(json.tamanhos))
+  }, []);
 
   return (
     <>
-      <HeaderPizza select={'Selecione o recheio:'} step={'3/4'} />
+      <HeaderPizza select={'Selecione o tamanho:'} step={'3/3'} />
 
-      <form>
-        <CardPizza
-          image={image}
-          pizzaName="Etapa3"
-          price={5}
-          content={asd}
-        />
-        <CardPizza
-          image={image}
-          pizzaName="Etapa3"
-          price={13}
-          content={asd}
-        />
-        <CardPizza
-          image={image}
-          pizzaName="Etapa3"
-          price={111}
-          content={asd}
-        />
-      </form>
-      <Button text={'montar seu pedido'} icon={<BiRightArrow />} href='/etapa4' />
+      {!tamanhos ? <Loading /> : (
+        <div>
+          {tamanhos.map((tamanho) => (
+            <CardPizza
+              key={tamanho.id}
+              pizzaName={tamanho.size}
+              price={tamanho.price}
+              content={tamanho.slices}
+              checked={selectedTamanho && (tamanho.id === selectedTamanho.id)}
+              onClick={() => handleClick(tamanho)}
+            />
+          ))}
+        </div>
+      )}
+      <Button
+        style={{
+          float: 'right',
+          margin: '1rem'
+        }}
+        text={'finalizar'}
+        icon={<BiRightArrow />}
+        href='/success'
+      />
     </>
   )
 }
 
-export default Etapa2;
+export default Etapa3;
