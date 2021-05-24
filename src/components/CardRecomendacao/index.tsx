@@ -16,7 +16,7 @@ createServer({
       recomendacao: {
         id: 1,
         nome: "Pizza Florenza",
-        image: "https://www.socialbauru.com.br/wp-content/uploads/2019/04/pizzadem.jpg",
+        image: "images/napolitana.jpg",
         massa: "Florenza",
         igredientes: "Molho de Tomate, Carne Seca Refogada com Cebola,Catupiry e Azeitonas.",
         preco: 37.5,

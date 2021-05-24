@@ -67,7 +67,7 @@ const Etapa3 = () => {
               key={tamanho.id}
               pizzaName={tamanho.size}
               price={tamanho.price}
-              content={tamanho.slices}
+              content={tamanho.slices + ' pedaços'}
               checked={selectedTamanho && (tamanho.id === selectedTamanho.id)}
               onClick={() => handleClick(tamanho)}
             />

@@ -17,19 +17,19 @@ createServer({
       massas: [
         {
           id: 1,
-          image: "https://www.socialbauru.com.br/wp-content/uploads/2019/04/pizzadem.jpg",
+          image: "/images/pizzaMassas/novaiorquina.jpg",
           massa: "Nova-Iorquina",
           detalhes: "Frequentemente vendida em fatias grandes e largas, a pizza ao estilo de Nova York tem uma massa mais grossa e é levemente crocante por fora. Dessa forma, são consumidas sem talheres. É bastante comum que as fatias sejam dobradas, facilitando o consumo por parte dos clientes.",
           price: 10
         }, {
           id: 2,
-          image: "https://www.socialbauru.com.br/wp-content/uploads/2019/04/pizzadem.jpg",
+          image: "/images/pizzaMassas/siciliana.jpg",
           massa: "Siciliana",
           detalhes: "Frequentemente vendida em fatias grandes e largas, a pizza ao estilo de Nova York tem uma massa mais grossa e é levemente crocante por fora. Dessa forma, são consumidas sem talheres. É bastante comum que as fatias sejam dobradas, facilitando o consumo por parte dos clientes.",
           price: 16
         }, {
           id: 3,
-          image: "https://www.socialbauru.com.br/wp-content/uploads/2019/04/pizzadem.jpg",
+          image: "/images/pizzaMassas/massanapolitana.jpg",
           massa: "Napolitana",
           detalhes: "Frequentemente vendida em fatias grandes e largas, a pizza ao estilo de Nova York tem uma massa mais grossa e é levemente crocante por fora. Dessa forma, são consumidas sem talheres. É bastante comum que as fatias sejam dobradas, facilitando o consumo por parte dos clientes.",
           price: 19

@@ -13,7 +13,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 ## 🚀 Como executar o projeto
 
-💡Para o correto funcionamento do app web é necessário que o servidor backend esteja rodando.
+💡Para o correto funcionamento do app web, dados mockados foram criados.
 
 ### 🎲 **Back End (servidor)**
 - Para o cumprimento dos requisitos foi utilizado uma Lib chamada <h3>**MIRAGEJS**</h3>
