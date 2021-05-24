@@ -5,12 +5,11 @@ interface PedidoData {
   image: string;
   massa: string;
   detalhes: string;
-  preco: number;
+  price: number;
 }
 
 interface Pedido {
   massa: PedidoData;
-  borda: PedidoData;
   recheio: PedidoData;
   tamanho: PedidoData;
 }
@@ -18,6 +17,7 @@ interface Pedido {
 interface PedidoContextData {
   data: Pedido;
   selecionar: (pedido: string, valor: PedidoData) => void;
+  limparPedido: () => void;
 }
 
 const PedidoContext = createContext<PedidoContextData>({} as PedidoContextData)
@@ -30,7 +30,6 @@ const PedidoProvider: React.FC<{ children: React.ReactNode }> = ({
   const [data, setData] = useState(() => {
     let pedido: Pedido = {
       massa: null,
-      borda: null,
       recheio: null,
       tamanho: null,
     }
@@ -55,8 +54,14 @@ const PedidoProvider: React.FC<{ children: React.ReactNode }> = ({
     setData(aux)
   };
 
+  const limparPedido = () => setData({
+      massa: null,
+      recheio: null,
+      tamanho: null,
+    })
+
   return (
-    <PedidoContext.Provider value={{ data, selecionar }}>
+    <PedidoContext.Provider value={{ data, selecionar, limparPedido }}>
       {children}
     </PedidoContext.Provider>
   )

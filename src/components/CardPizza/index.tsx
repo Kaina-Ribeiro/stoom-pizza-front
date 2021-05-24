@@ -20,10 +20,12 @@ export default function CardPizza({
   return (
     <div className={styles.card} onClick={handleClick}>
       <div className={styles.cardBody}>
-        <div
-          className={styles.cardImage}
-          style={{backgroundImage: `url('${image}')`}}
-        />
+        {image && (
+          <div
+            className={styles.cardImage}
+            style={{backgroundImage: `url('${image}')`}}
+          />
+        )}
 
         <div className={styles.cardContent}>
           <div className={`${styles.title} ${checked ? styles.checked : ''}`}>

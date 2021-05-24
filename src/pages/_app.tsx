@@ -1,27 +1,21 @@
 import { AppProps } from 'next/app'
 
-import { PedidoProvider } from '../hooks/Pedido'
+import Provider from '../hooks'
 
-import Card from '../components/CardRecomendacao'
 import { Header } from '../components/Header'
 import { HeadPage } from '../components/HeadPage'
-import Steps from '../components/Steps'
 
 import '../styles/global.scss'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <Provider>
       <HeadPage />
       <Header />
       <main>
-        <Card />
-        <PedidoProvider>
-          <Steps />
-          <Component {...pageProps} />
-        </PedidoProvider>
+        <Component {...pageProps} />
       </main>
-    </>
+    </Provider>
   )
 }
 

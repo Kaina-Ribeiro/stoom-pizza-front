@@ -51,7 +51,8 @@
     border: 2px solid white;
     content: '';
     position: absolute;
-    border-radius: 50%;
+    transition: all 0.1s;
+    border-radius: 30%;
     background-color: white;
   }
 }
@@ -68,7 +69,7 @@
     height: 24px;
     content: '';
     position: absolute;
-    border-radius: 50%;
+    border-radius: 30%;
     background-color: var(--green);
   }
 }

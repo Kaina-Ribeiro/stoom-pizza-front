@@ -16,7 +16,7 @@
 .lineStep {
   flex: 1;
   height: 0.4rem;
-  background-color: var(--green);
+  background-color: var(--gray-300);
   animation: 0.3s ease-in;
 }
 
@@ -35,6 +35,10 @@
   border-radius: 50%;
   width: 2rem;
   height: 2rem;
-  background-color: var(--green);
+  background-color: var(--gray-300);
   cursor: pointer;
+}
+
+.active {
+  background-color: var(--green);
 }

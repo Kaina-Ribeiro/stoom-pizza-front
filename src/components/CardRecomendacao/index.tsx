@@ -1,10 +1,14 @@
 import { createServer } from "miragejs"
 import { useEffect, useState } from 'react'
 
-import styles from './styles.module.scss';
 import { FaCheck } from 'react-icons/fa';
+
+import { usePontos } from "../../hooks/Pontos";
+
 import Button from '../Button';
 import Loading from '../Loading';
+
+import styles from './styles.module.scss';
 
 createServer({
   routes() {
@@ -15,7 +19,7 @@ createServer({
         image: "https://www.socialbauru.com.br/wp-content/uploads/2019/04/pizzadem.jpg",
         massa: "Florenza",
         igredientes: "Molho de Tomate, Carne Seca Refogada com Cebola,Catupiry e Azeitonas.",
-        preco: 69.9,
+        preco: 37.5,
         pontos: 50
       },
     }))
@@ -24,21 +28,27 @@ createServer({
 })
 
 export default function CardRecomendacao() {
-  const [data, setData] = useState(null);
+  const [recomendation, setRecomendation] = useState(null);
+
+  const {adicionarPontos} = usePontos();
+
+  const handleClick = (pontos) => {
+    adicionarPontos(pontos);
+  }
 
   useEffect(() => {
     fetch('/api/recomendacao')
       .then((res) => res.json())
-      .then((json) => setData(json.recomendacao))
+      .then((json) => setRecomendation(json.recomendacao))
   }, [])
 
   return (
     <div className={styles.container}>
       <div className={styles.card}>
-        {!data ? <Loading className={styles.card} /> : (
+        {!recomendation ? <Loading className={styles.card} /> : (
           <>
             <div className={styles.badge}>
-              <span>{data.pontos}</span>pontos
+              <span>{recomendation.pontos}</span>pontos
             </div>
             <div className={styles.cardHeader}>
               <h3 className={styles.title}>Pizza do dia:</h3>
@@ -47,24 +57,29 @@ export default function CardRecomendacao() {
             <div className={styles.cardBody}>
               <div
                 className={styles.cardImage}
-                style={{backgroundImage: `url('${data.image}')`}}
+                style={{backgroundImage: `url('${recomendation.image}')`}}
               />
               <div className={styles.cardContent}>
-                <h3>{data.nome}</h3>
+                <h3>{recomendation.nome}</h3>
                 <div className={styles.cardSection}>
                   <span>Massa:</span>
-                  <p>{data.massa}</p>
+                  <p>{recomendation.massa}</p>
                 </div>
                 <div className={styles.cardSection}>
                   <span>Ingredientes:</span>
-                  <p>{data.ingredientes}</p>
+                  <p>{recomendation.ingredientes}</p>
                 </div>
 
                 <div className={styles.cardInfo}>
                   <span className={styles.price}>
-                    {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(data.preco)}
+                    {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(recomendation.preco)}
                   </span>
-                  <Button text={'quero!'} icon={<FaCheck />} href={'/'} />
+                  <Button
+                    text='quero!'
+                    icon={<FaCheck />}
+                    href='/success'
+                    onClick={() => handleClick(recomendation.pontos)}
+                  />
                 </div>
               </div>
             </div>

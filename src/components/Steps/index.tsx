@@ -1,42 +1,56 @@
+import Link from 'next/link';
+
+import HeaderPizza from "../HeaderPizza";
+
 import styles from './styles.module.scss';
 
-const Steps = () => {
+interface StepsProps {
+  step: number;
+  etapaText: string;
+  maxSteps: number;
+}
 
-  return (
+const Steps = ({step, etapaText, maxSteps}: StepsProps) => (
+  <>
     <div className={styles.containerSteps}>
       <div className={styles.containerLine}>
-        <div className={styles.lineStep}></div>
-        <div className={styles.lineStep}></div>
-        <div className={styles.lineStep}></div>
+        {[...Array(maxSteps-1)].map((_, currentStep) =>{
+          currentStep += 1;
+          return (
+            <div
+              key={currentStep}
+              className={`${styles.lineStep} ${
+                currentStep < step
+                  ? styles.active
+                  : ''
+              }`}
+            />
+          )
+        })}
       </div>
 
       <div className={styles.containerRounded}>
-        <div>
-          <div className={styles.step}>
-            1
-          </div>
-        </div>
-        <div>
-          <div className={styles.step}>
-            2
-          </div>
-        </div>
-
-        <div>
-          <div className={styles.step}>
-            3
-          </div>
-        </div>
-
-        <div>
-          <div className={styles.step}>
-            4
-          </div>
-        </div>
-
+        {[...Array(maxSteps)].map((_, currentStep) => {
+          currentStep += 1;
+          return (
+            <Link href={`/etapa${currentStep}`}>
+              <div
+                key={currentStep}
+                className={`${styles.step} ${
+                  currentStep <= step
+                    ? styles.active
+                    : ''
+                }`}
+              >
+                {currentStep}
+              </div>
+            </Link>
+          )
+        })}
       </div>
     </div>
-  )
-}
+    <HeaderPizza select={etapaText} step={`${step}/${maxSteps}`} />
+  </>
+)
 
 export default Steps;

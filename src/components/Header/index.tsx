@@ -1,10 +1,12 @@
 import styles from './styles.module.scss';
 
+import { usePontos } from "../../hooks/Pontos";
+
 import Brand from '../../images/pizza-slice.svg';
 import UserPoints from '../../images/cutlery.svg';
 
 export const Header = () => {
-  const points = 0;
+  const {somaPontos} = usePontos();
 
   return (
     <header className={styles.headerContainer}>
@@ -23,7 +25,7 @@ export const Header = () => {
             <UserPoints />
             <div>
               StoomPoints
-              <br /><span>{points}</span> pontos.
+              <br /><span>{somaPontos()}</span> pontos.
             </div>
           </section>
         </nav>

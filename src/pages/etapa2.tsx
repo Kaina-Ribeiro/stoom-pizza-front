@@ -9,6 +9,7 @@ import HeaderPizza from '../components/HeaderPizza'
 import Loading from '../components/Loading'
 
 import { usePedido } from '../hooks/Pedido'
+import Steps from "../components/Steps"
 
 createServer({
   routes() {
@@ -29,7 +30,7 @@ createServer({
         }, {
           id: 3,
           image: "/images/pizzaSabores/brocolis.jpg",
-          massa: "brocolis com bacon",
+          massa: "Brocolis",
           detalhes: "Recheio de brocolis com bacon",
           price: 19
         }
@@ -57,7 +58,7 @@ const Etapa2 = () => {
 
   return (
     <>
-      <HeaderPizza select={'Selecione o recheio:'} step={'2/3'} />
+      <Steps step={2} maxSteps={3} etapaText='Selecione o recheio:' />
       {!recheios ? <Loading /> : (
         <div>
           {recheios.map(recheio => (

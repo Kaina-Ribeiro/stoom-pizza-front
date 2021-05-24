@@ -7,6 +7,7 @@ import CardPizza from '../components/CardPizza'
 import HeaderPizza from '../components/HeaderPizza'
 import Loading from '../components/Loading'
 import { usePedido } from "../hooks/Pedido";
+import Steps from "../components/Steps";
 
 createServer({
   routes() {
@@ -17,20 +18,17 @@ createServer({
           size: "Pequena",
           price: 19.99,
           slices: 4
-        },
-        {
+        }, {
           id: 2,
           size: "Média",
           price: 29.99,
           slices: 6
-        },
-        {
+        }, {
           id: 3,
           size: "Grande",
           price: 39.99,
           slices: 8
-        },
-        {
+        }, {
           id: 4,
           size: "Família",
           price: 49.99,
@@ -60,7 +58,7 @@ const Etapa3 = () => {
 
   return (
     <>
-      <HeaderPizza select={'Selecione o tamanho:'} step={'3/3'} />
+      <Steps step={3} maxSteps={3} etapaText='Selecione o tamanho:' />
 
       {!tamanhos ? <Loading /> : (
         <div>

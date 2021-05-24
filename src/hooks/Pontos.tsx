@@ -1,75 +1,79 @@
-import React, { createContext, useContext, useCallback, useState } from 'react'
+import React, { createContext, useContext, useState } from 'react'
 
-interface PedidoData {
+interface Ponto {
   id: number;
-  image: string;
-  massa: string;
-  detalhes: string;
-  preco: number;
+  ponto: number;
 }
 
-interface Pedido {
-  massa: PedidoData;
-  borda: PedidoData;
-  recheio: PedidoData;
-  tamanho: PedidoData;
+interface PontoContext {
+  data: Ponto[];
+  adicionarPontos: (pontos: number) => void;
+  somaPontos: () => number;
 }
 
-interface PedidoContextData {
-  data: Pedido;
-  selecionar: (pedido: string, valor: PedidoData) => void;
-}
+const PontoContext = createContext<PontoContext>({} as PontoContext)
 
-const PedidoContext = createContext<PedidoContextData>({} as PedidoContextData)
-
-const PedidoProvider: React.FC<{ children: React.ReactNode }> = ({
+const PontosProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }: {
   children: React.ReactNode
 }) => {
+  let i = 0;
   const [data, setData] = useState(() => {
-    let pedido: Pedido = {
-      massa: null,
-      borda: null,
-      recheio: null,
-      tamanho: null,
-    }
+    let pontos: Ponto[] = []
 
     if (typeof window != 'undefined') {
-      pedido = JSON.parse(localStorage.getItem('@Stoom:pedido')) as Pedido
+      pontos = JSON.parse(localStorage.getItem('@Stoom:ponto')) as Ponto[]
+
+      if (pontos) {
+        i = pontos.length - 1;
+      }
     }
 
-    return pedido as Pedido
+    return pontos || []
   })
 
-  const selecionar = (pedido, valor) => {
-    const aux = {
-      ...data,
-      [pedido]: valor,
-    };
+  const adicionarPontos = (val) => {
+    const aux = data;
+    aux.push({
+      id: ++i,
+      ponto: val,
+    });
 
     if (typeof window != 'undefined') {
-      localStorage.setItem('@Stoom:pedido', JSON.stringify(aux))
+      localStorage.setItem('@Stoom:ponto', JSON.stringify(aux));
     }
 
-    setData(aux)
+    setData(aux);
   };
 
+  const somaPontos = () => {
+    const a = data;
+    let sum = 0;
+
+    for (const key in a) {
+      if (a[key]?.ponto) {
+        sum += a[key]?.ponto;
+      }
+    }
+    return sum;
+  }
+
   return (
-    <PedidoContext.Provider value={{ data, selecionar }}>
+    <PontoContext.Provider value={{ data, adicionarPontos, somaPontos }}>
       {children}
-    </PedidoContext.Provider>
+    </PontoContext.Provider>
   )
 }
 
-function usePedido(): PedidoContextData {
-  const context = useContext(PedidoContext)
+function usePontos(): PontoContext {
+  const context = useContext(PontoContext)
 
   if (!context) {
-    throw new Error('usePedido must be used within a PedidoProvider')
+    throw new Error('usePontos must be used within a PontosProvider')
   }
 
   return context
 }
 
-export { PedidoProvider, usePedido }
+export { PontosProvider, usePontos }
