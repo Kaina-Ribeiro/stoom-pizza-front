@@ -72,17 +72,19 @@ const Etapa2 = () => {
               onClick={() => handleClick(recheio)}
             />
           ))}
+          <Button
+            style={{
+              float: 'right',
+              margin: '1rem'
+            }}
+            text={'montar seu pedido'}
+            icon={<BiRightArrow />}
+            href='/etapa3'
+          />
         </div>
+
       )}
-      <Button
-        style={{
-          float: 'right',
-          margin: '1rem'
-        }}
-        text={'montar seu pedido'}
-        icon={<BiRightArrow />}
-        href='/etapa3'
-      />
+
     </>
   )
 }

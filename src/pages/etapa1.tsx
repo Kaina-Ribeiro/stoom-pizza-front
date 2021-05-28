@@ -77,18 +77,20 @@ export default function Home() {
               onClick={() => handleClick(massa)}
             />
           ))}
+          <Button
+            style={{
+              float: 'right',
+              margin: '1rem'
+            }}
+            text={'montar seu pedido'}
+            icon={<BiRightArrow />}
+            href='/etapa2'
+          />
         </div>
+
       )}
 
-      <Button
-        style={{
-          float: 'right',
-          margin: '1rem'
-        }}
-        text={'montar seu pedido'}
-        icon={<BiRightArrow />}
-        href='/etapa2'
-      />
+
     </>
   )
 }

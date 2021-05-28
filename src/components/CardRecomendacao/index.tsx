@@ -18,7 +18,7 @@ createServer({
         nome: "Pizza Florenza",
         image: "images/napolitana.jpg",
         massa: "Florenza",
-        igredientes: "Molho de Tomate, Carne Seca Refogada com Cebola,Catupiry e Azeitonas.",
+        ingredientes: "Molho de Tomate, Carne Seca Refogada com Cebola,Catupiry e Azeitonas.",
         preco: 37.5,
         pontos: 50
       },

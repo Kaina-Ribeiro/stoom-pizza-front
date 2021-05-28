@@ -1,8 +1,15 @@
+import { useEffect } from "react";
 import { BiRightArrow } from "react-icons/bi";
 import Button from "../components/Button";
 import CardRecomendacao from "../components/CardRecomendacao";
+import { usePedido } from "../hooks/Pedido";
 
 export default function Home() {
+  const {limparPedido} = usePedido();
+
+  useEffect(() => {
+    limparPedido();
+  }, []);
 
   return (
     <>

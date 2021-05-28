@@ -33,9 +33,8 @@ const Steps = ({step, etapaText, maxSteps}: StepsProps) => (
         {[...Array(maxSteps)].map((_, currentStep) => {
           currentStep += 1;
           return (
-            <Link href={`/etapa${currentStep}`}>
+            <Link key={currentStep} href={`/etapa${currentStep}`}>
               <div
-                key={currentStep}
                 className={`${styles.step} ${
                   currentStep <= step
                     ? styles.active
